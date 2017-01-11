@@ -1,0 +1,5 @@
+> paradox
+
+$ must-mirror target/paradox/site/index.html expected/index.html
+$ exists target/paradox/site/a.html
+$ exists target/paradox/site/bb/b.html

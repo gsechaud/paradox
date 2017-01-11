@@ -228,9 +228,10 @@ object Path {
   def generateTargetFile(localPath: String, globalPageMappings: Map[String, String])(link: String): String = {
     val mappings = relativeMapping(localPath, globalPageMappings)
     val uri = new URI(localPath).resolve(new URI(link))
+    println("--- Page.scala: uriLink = " + uri.toString)
     mappings.get(uri.getPath) match {
       case Some(p) => p + Option(uri.getFragment).fold("")("#".+)
-      case None    => sys.error(s"No reference link corresponding to $link")
+      case None    => sys.error(s"No reference link corresponding to $link") // TODO: generate empty file instead
     }
   }
 
